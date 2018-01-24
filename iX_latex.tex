@@ -1,0 +1,92 @@
+\documentclass[12pt,twoside,draft=true]{article}
+% erzeugt Dienstag, 23. Januar 2018 19:17 (C) 2018 von Leander Jedamus
+% modifiziert Mittwoch, 24. Januar 2018 10:52 von Leander Jedamus
+% modifiziert Dienstag, 23. Januar 2018 20:45 von Leander Jedamus
+
+\usepackage[utf8]{inputenc}
+\usepackage[b4,cam,center]{crop}
+\usepackage{scrlayer}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+\newlength{\wasserzeichenwidth}
+\newlength{\wasserzeichenheight}
+\newlength{\wasserzeichenvoffset}
+\newlength{\wasserzeichenhoffset}
+\setlength{\wasserzeichenwidth}{\paperwidth}
+\setlength{\wasserzeichenheight}{\paperheight}
+\setlength{\wasserzeichenvoffset}{0mm}
+\setlength{\wasserzeichenhoffset}{0mm}
+
+\newsavebox{\WasserzeichenBox}
+\sbox{\WasserzeichenBox}{%
+    \begin{tikzpicture}
+      \path(0,0) -- node[sloped,black!25,font=\fontsize{75}{75}\selectfont\sffamily]{Entwurf}(\wasserzeichenwidth,\wasserzeichenheight);
+    \end{tikzpicture}%
+}
+
+\DeclareNewLayer[textarea,background,
+  hoffset=\wasserzeichenhoffset,
+  voffset=\wasserzeichenvoffset,
+  width=\wasserzeichenwidth,
+  height=\wasserzeichenheight,
+  contents={%
+    \usebox{\WasserzeichenBox}%
+  }
+]{watermark}
+
+\DeclareNewLayer[clone=watermark,
+  contents={%
+    \begin{tikzpicture}
+      \path(0,0) -- node[sloped,black!25,font=\fontsize{280}{280}\selectfont\sffamily]{draft}(\layerwidth,\layerheight);
+    \end{tikzpicture}%
+  }
+]{watermark.en}
+
+\DeclareNewPageStyleByLayers{watermarked}{watermark}
+
+%% zweiter Teil
+
+%Hintergrundbild
+\DeclareNewLayer[
+  page,
+  background,
+  contents={\includegraphics[trim=1mm 1mm 1mm 1mm]{/usr/lib/libreoffice/share/gallery/computers/Computer-Cloud.png}}
+]{background}
+
+%Logo
+\DeclareNewLayer[
+  align=tl,
+  hoffset=2cm,
+  voffset=1cm,
+  width=4cm,
+  height=2.2cm,
+  background,
+  contents={\includegraphics[width=\layerwidth]{/usr/lib/libreoffice/share/gallery/computers/Computer-Desktop.png}}
+]{logo}
+
+%Adressfeld
+\DeclareNewLayer[
+  align=tr,
+  hoffset=\dimexpr\paperwidth-4mm\relax,
+  voffset=\dimexpr4mm+\tabcolsep\relax,
+  width=\dimexpr\paperwidth-14cm-4mm\relax,
+  height=3\baselineskip,
+  contents={%
+    Firmenname\\
+    Straße Nr.\\
+    PLZ Ort
+  }
+]{addressfield}
+
+\DeclareNewPageStyleByLayers{titlestyle}{watermark,addressfield,background,logo}
+
+%\pagestyle{watermarked}
+\pagestyle{titlestyle}
+
+\begin{document}
+  Test.
+\end{document}
+
+% vim:ai sw=2
+
