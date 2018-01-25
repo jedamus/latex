@@ -1,6 +1,6 @@
 
 % erzeugt Mittwoch, 24. Januar 2018 18:07 (C) 2018 von Leander Jedamus
-% modifiziert Donnerstag, 25. Januar 2018 15:38 von Leander Jedamus
+% modifiziert Donnerstag, 25. Januar 2018 17:53 von Leander Jedamus
 % modifiziert Mittwoch, 24. Januar 2018 19:44 von Leander Jedamus
 \documentclass[12pt,paper=a4,pagesize=auto,draft=false,
 	       headinclude=false,footinclude=false,mpinclude=false,
@@ -23,14 +23,34 @@
 \automark[chapter]{chapter}
 \automark*[section]{}
 
+\newcommand*{\hoch}[2]{#1\textsuperscript{#2}}
+\newcommand*{\Molek}[2]{\textsf{#1\textsubscript{#2}}}
+
 \begin{document}
+  \titlehead{Kopf}
+  \subject{Typisierung}
+  \title{Titel}
+  \subtitle{Untertitel}
+  \author{Leander Jedamus}
+  \date{25. Januar 2018}
+  \publishers{Verlag}
+  \thanks{Fußnote}
+  \maketitle
+
+
   \chapter{Kapitel}
+    \hoch a2 + \hoch b2 = \hoch c2\\
+    Die Zelle bezieht ihre Energie unter anderem aus der Reaktion von
+    \Molek C6\Molek H{12}\Molek O6 und \Molek O2 zu \Molek H2\Molek O{}
+    und \Molek C{}\Molek O2. Arsen (\Molek {As}{}) wirkt sich auf den
+    Stoffwechsel sehr nachteilig aus.\\
+    test\\
   %\blindtext[20]
   \flushbottom% vertikaler Ausgleich der letzten Zeile einer Seite
-  %\raggedbottom% kein vertikaler Ausgleich
   \lipsum[1-20]
   \section{Abschnitt}
   %\blinddocument
+  \raggedbottom% kein vertikaler Ausgleich
   \lipsum[21-40]
 \end{document}
 
