@@ -1,0 +1,50 @@
+\documentclass[12pt]{scrartcl}
+% erzeugt Mittwoch, 31. Januar 2018 15:31 (C) 2018 von Leander Jedamus
+% modifiziert Mittwoch, 31. Januar 2018 16:16 von Leander Jedamus
+
+\usepackage{expl3}
+\usepackage{xparse}
+\usepackage{color}
+
+\NewDocumentCommand{\farbig}
+{sO{red}m}
+{
+  \IfBooleanTF{#1}
+  {
+    \colorbox{#2}{#3}
+  }
+  {
+    \textcolor{#2}{#3}
+  }
+}
+
+\ExplSyntaxOn
+\ExplSyntaxOff
+
+\begin{document}
+  \ExplSyntaxOn
+    \int_new:N \g_LaTeXtut_item_int
+    Variable~ vor~ Wertzuweisung:~
+    \int_use:N \g_LaTeXtut_item_int
+    \newline
+    \int_set:Nn \g_LaTeXtut_item_int {42}
+    Variable~ nach~ Wertzuweisung:~
+    \int_use:N \g_LaTeXtut_item_int
+    \newline
+    \farbig{Text}
+    \newline
+    \cs_new:Nn \LaTeXtut_TextMakro: {TextMakroContent}
+    \tl_set:Nn \l_tmpa_tl {ABC- \LaTeXtut_TextMakro:~DEF}
+    \tl_clear:N \l_tmpb_tl
+    \tl_put_right:Nn \l_tmpb_tl {\l_tmpa_tl}
+    \tl_put_right:Nn \l_tmpb_tl {--}
+    \tl_put_right:NV \l_tmpb_tl \l_tmpa_tl
+    \tl_put_right:Nn \l_tmpb_tl {--}
+    \tl_put_right:Nx \l_tmpb_tl {\l_tmpa_tl}
+
+    \tl_use:N \l_tmpb_tl
+  \ExplSyntaxOff
+\end{document}
+
+% vim:ai sw=2
+
