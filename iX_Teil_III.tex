@@ -1,0 +1,52 @@
+\documentclass[12pt]{scrartcl}
+% erzeugt Mittwoch, 31. Januar 2018 15:31 (C) 2018 von Leander Jedamus
+% modifiziert Mittwoch, 21. März 2018 13:46 von Leander Jedamus
+% modifiziert Mittwoch, 31. Januar 2018 16:16 von Leander Jedamus
+
+\usepackage{expl3}
+\usepackage{xparse}
+
+\ExplSyntaxOn
+
+\ior_new:N \g_LaTeXtut_content_ior
+
+\int_new:N \g_LaTeXtut_items_int
+\seq_new:N \l_LaTeXtut_dataLine_seq
+
+\NewDocumentCommand\CVStoProp{m} {
+  \ior_open:Nn \g_LaTeXtut_content_ior {#1}
+
+  \tl_new:N \l_LaTeXtut_dataHeader_tl
+  \ior_get_str:NN \g_LaTeXtut_content_ior \l_LaTeXtut_dataHeader_tl
+
+  \seq_new:N \l_LaTeXtut_dataHeader_seq
+  \seq_set_split:NnV \l_LaTeXtut_dataHeader_seq {;} \l_LaTeXtut_dataHeader_tl
+
+  \int_zero:N \l_tmpa_int
+  \seq_map_inline:Nn \l_LaTeXtut_dataHeader_seq {
+    \int_incr:N \l_tmpa_int
+    \cs_new:cx {laTeXtut_##1_ColID:} {
+      \int_use:N \l_tmpa_int
+    }
+  }
+
+  \ior_map_inline:Nn \g_LaTeXtut_content_ior {
+    \int_gincr:N \g_LaTeXtut_items_int
+    \prop_new:c {g_LaTeXtut_data_\int_use:N \g_LaTeXtut_items_int _prop}
+    \seq_set_split:Nnn \l_LaTeXtut_dataLine_seq {;} {##1}
+    \seq_map_inline:Nn \l_LaTeXtut_dataHeader_seq {
+      \prop_gput:cnx {g_LaTeXtut_data_\int_use:N \g_LaTeXtut_items_int _prop} {####1}
+        {\seq_item:Nn \l_LaTeXtut_dataLine_seq {\use:c {laTeXtut_####1_ColID:}}}
+    }
+  }
+
+}
+
+\ExplSyntaxOff
+
+\begin{document}
+  \CVStoProp{inventar.csv}
+\end{document}
+
+% vim:ai sw=2
+
