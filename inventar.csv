@@ -1,2 +1,3 @@
-ID;Typ
-TeX-001;Server
+ID;Typ;IP;Name;Netzwerkadresse;Position;Ansprechpartner
+TeX-001;Server;192.168.0.1;bacon;bacon.LaTeXtut.iX;29;Hackse01
+TeX-002;Server;192.168.0.2;kraut;kraut.LaTeXtut.iX;15-18;Hacker02
