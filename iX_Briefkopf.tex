@@ -1,5 +1,6 @@
 \documentclass[12pt,twoside,draft=false]{article}
 % erzeugt Dienstag, 23. Januar 2018 19:17 (C) 2018 von Leander Jedamus
+% modifiziert Montag, 16. April 2018 00:59 von Leander Jedamus
 % modifiziert Sonntag, 15. April 2018 23:34 von Leander Jedamus
 % modifiziert Mittwoch, 24. Januar 2018 15:40 von Leander Jedamus
 % modifiziert Dienstag, 23. Januar 2018 20:45 von Leander Jedamus
@@ -83,11 +84,27 @@
   }
 ]{addressfield}
 
+\usepackage{pict2e}
+
+\DeclareNewLayer[%
+  textarea,
+  background,
+  mode=picture,
+  contents={%
+    \putLL{\line(1,0){\LenToUnit{\layerwidth}}}%
+    \putLR{\line(0,1){\LenToUnit{\layerheight}}}%
+    \putUR{\line(-1,0){\LenToUnit{\layerwidth}}}%
+    \putUL{\line(0,-1){\LenToUnit{\layerheight}}}%
+    \putC{\circle{\LenToUnit{\paperwidth}}}%
+  }
+]{showtextarea}
+
 \DeclareNewPageStyleByLayers{titlestyle}{watermark,addressfield,background,logo}
 
 %% 3. Teil
 
-\AddLayersToPageStyle{scrheadings}{watermark,background,logo}
+%\AddLayersToPageStyle{scrheadings}{watermark,background,logo}
+\AddLayersToPageStyle{scrheadings}{watermark,showtextarea}
 
 \lehead[plain lehead]{lehead}
 \cehead[plain cehead]{cehead}
