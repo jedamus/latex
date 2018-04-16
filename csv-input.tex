@@ -1,8 +1,16 @@
-\ExplSyntaxOn
 
+% erzeugt Dienstag, 15. April 2018 19:17 (C) 2018 von Leander Jedamus
+% modifiziert Montag, 16. April 2018 07:28 von Leander Jedamus
 % modifiziert Donnerstag, 12. April 2018 16:07 von Leander Jedamus
 
 \usepackage{l3regex}
+
+\ExplSyntaxOn
+
+%\seq_put_right:Nn \l_char_active_seq \"
+%\seq_show:N \l_char_active_seq
+
+% ----------------------------------------------------------
 
 \ior_new:N \g_LaTeXtut_content_ior
 
@@ -27,18 +35,55 @@
   }
 
   \tl_new:N \l_LaTeXtut_line_tl
+  %\regex_const:Nn \
+  %\char_generate:nn {223} {11}
   \ior_map_inline:Nn \g_LaTeXtut_content_ior {
     \int_gincr:N \g_LaTeXtut_items_int
     \prop_new:c {g_LaTeXtut_data_\int_use:N \g_LaTeXtut_items_int _prop}
     \tl_set:Nn \l_LaTeXtut_line_tl {##1}
-    %\tl_show:N \l_LaTeXtut_line_tl
+    \tl_show:N \l_LaTeXtut_line_tl
     % get ""
     \regex_replace_all:nnN
       {"(.*?)"} % regex
       { \cB\{ \1 \cE\} } % replacement
       \l_LaTeXtut_line_tl
+    % get ä
+    \regex_replace_all:nnN
+      {ä} % regex
+      {\cB\{\cC\"a\cE\}} % replacement
+      \l_LaTeXtut_line_tl
+    % get ü
+    \regex_replace_all:nnN
+      {ü} % regex
+      {\cB\{\cC\"u\cE\}} % replacement
+      \l_LaTeXtut_line_tl
+    % get ö
+    \regex_replace_all:nnN
+      {ö} % regex
+      {\cB\{\cC\"o\cE\}} % replacement
+      \l_LaTeXtut_line_tl
+    % get Ä
+    \regex_replace_all:nnN
+      {Ä} % regex
+      {\cB\{\cC\"A\cE\}} % replacement
+      \l_LaTeXtut_line_tl
+    % get Ö
+    \regex_replace_all:nnN
+      {Ö} % regex
+      {\cB\{\cC\"O\cE\}} % replacement
+      \l_LaTeXtut_line_tl
+    % get Ü
+    \regex_replace_all:nnN
+      {Ü} % regex
+      {\cB\{\cC\"U\cE\}} % replacement
+      \l_LaTeXtut_line_tl
+    % get ß
+    \regex_replace_all:nnN
+      {ß} % regex
+      {\cB\{\cC"ss\cE\}} % replacement
+      \l_LaTeXtut_line_tl
 
-    %\tl_show:N \l_LaTeXtut_line_tl
+    \tl_show:N \l_LaTeXtut_line_tl
 
     \seq_set_split:NnV \l_LaTeXtut_dataLine_seq {;} \l_LaTeXtut_line_tl
     \seq_map_inline:Nn \l_LaTeXtut_dataHeader_seq {
