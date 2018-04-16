@@ -1,6 +1,6 @@
 \documentclass[12pt,twoside,draft=false]{article}
 % erzeugt Dienstag, 23. Januar 2018 19:17 (C) 2018 von Leander Jedamus
-% modifiziert Montag, 16. April 2018 00:59 von Leander Jedamus
+% modifiziert Montag, 16. April 2018 02:24 von Leander Jedamus
 % modifiziert Sonntag, 15. April 2018 23:34 von Leander Jedamus
 % modifiziert Mittwoch, 24. Januar 2018 15:40 von Leander Jedamus
 % modifiziert Dienstag, 23. Januar 2018 20:45 von Leander Jedamus
@@ -56,7 +56,8 @@
 \DeclareNewLayer[
   page,
   background,
-  contents={\includegraphics[trim=1mm 1mm 1mm 1mm]{background.png}}
+  %contents={\includegraphics[trim=1mm 1mm 1mm 1mm]{background.png}}
+  contents={\rotatebox[origin=c]{45}{\includegraphics{background.png}}}
 ]{background}
 
 %Logo
@@ -88,7 +89,7 @@
 
 \DeclareNewLayer[%
   textarea,
-  background,
+  foreground,
   mode=picture,
   contents={%
     \putLL{\line(1,0){\LenToUnit{\layerwidth}}}%
@@ -104,7 +105,7 @@
 %% 3. Teil
 
 %\AddLayersToPageStyle{scrheadings}{watermark,background,logo}
-\AddLayersToPageStyle{scrheadings}{watermark,showtextarea}
+\AddLayersToPageStyle{scrheadings}{watermark,showtextarea,background}
 
 \lehead[plain lehead]{lehead}
 \cehead[plain cehead]{cehead}
