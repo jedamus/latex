@@ -1,5 +1,6 @@
 ID;Typ;IP;Name;Netzwerkadresse;Position;Ansprechpartner
 "Fritz!Box 7490";Router;12.168.178.1;fritz;fritz.box;Flur;"Leander Jedamus"
-master;Server;192.168.178.2;master;master.fritz.box;Eßzimmer;"Leander Jedamus"
+master;Server;192.168.178.31;master;master.fritz.box;Eßzimmer;"Leander Jedamus"
+"Time Capsule";Backup;192.168.178.26;wlan-08154711;wlan-08154711.fritz.box;Flur;"Leander Jedamus"
 Leanders-iPad;iPad;192.168.178.29;Leanders-iPad;Leanders-iPad.fritz.box;"im Haus";"Leander Jedamus"
 Leanders-iPhone;iPhone;192.168.178.34;Leanders-iPhone;Leanders-iPhone.fritz.box;"im Haus";"Leander Jedamus"
