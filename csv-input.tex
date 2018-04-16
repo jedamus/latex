@@ -1,6 +1,6 @@
 
 % erzeugt Dienstag, 15. April 2018 19:17 (C) 2018 von Leander Jedamus
-% modifiziert Montag, 16. April 2018 07:28 von Leander Jedamus
+% modifiziert Montag, 16. April 2018 08:34 von Leander Jedamus
 % modifiziert Donnerstag, 12. April 2018 16:07 von Leander Jedamus
 
 \usepackage{l3regex}
@@ -37,6 +37,7 @@
   \tl_new:N \l_LaTeXtut_line_tl
   %\regex_const:Nn \
   %\char_generate:nn {223} {11}
+  \def\s{\ss}
   \ior_map_inline:Nn \g_LaTeXtut_content_ior {
     \int_gincr:N \g_LaTeXtut_items_int
     \prop_new:c {g_LaTeXtut_data_\int_use:N \g_LaTeXtut_items_int _prop}
@@ -80,7 +81,7 @@
     % get ß
     \regex_replace_all:nnN
       {ß} % regex
-      {\cB\{\cC"ss\cE\}} % replacement
+      {\cB\{\cC\s\cE\}} % replacement
       \l_LaTeXtut_line_tl
 
     \tl_show:N \l_LaTeXtut_line_tl
