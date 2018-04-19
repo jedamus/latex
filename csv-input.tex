@@ -1,6 +1,6 @@
 
 % erzeugt Dienstag, 15. April 2018 19:17 (C) 2018 von Leander Jedamus
-% modifiziert Donnerstag, 19. April 2018 11:48 von Leander Jedamus
+% modifiziert Donnerstag, 19. April 2018 14:00 von Leander Jedamus
 % modifiziert Montag, 16. April 2018 17:08 von Leander Jedamus
 % modifiziert Donnerstag, 12. April 2018 16:07 von Leander Jedamus
 
@@ -57,40 +57,41 @@
       \l_LaTeXtut_regex_quotes_tl % regex
       { \cB\{ \1 \cE\} } % replacement
       \l_LaTeXtut_line_tl
+
     % get ä
     \regex_replace_all:NnN
       \l_LaTeXtut_regex_ae_tl % regex
-      {\cC\"a} % replacement
+      {\cC"a} % replacement
       \l_LaTeXtut_line_tl
     % get ö
     \regex_replace_all:NnN
       \l_LaTeXtut_regex_oe_tl % regex
-      {\cC\"o} % replacement
+      {\cC"o} % replacement
       \l_LaTeXtut_line_tl
     % get ü
     \regex_replace_all:NnN
       \l_LaTeXtut_regex_ue_tl % regex
-      {\cC\"u} % replacement
+      {\cC"u} % replacement
       \l_LaTeXtut_line_tl
     % get Ä
     \regex_replace_all:NnN
       \l_LaTeXtut_regex_Ae_tl % regex
-      {\cC\"A} % replacement
+      {\cC"A} % replacement
       \l_LaTeXtut_line_tl
     % get Ö
     \regex_replace_all:NnN
       \l_LaTeXtut_regex_Oe_tl % regex
-      {\cC\"O} % replacement
+      {\cC"O} % replacement
       \l_LaTeXtut_line_tl
     % get Ü
     \regex_replace_all:NnN
       \l_LaTeXtut_regex_Ue_tl % regex
-      {\cC\"U} % replacement
+      {\cC"U} % replacement
       \l_LaTeXtut_line_tl
     % get ß
     \regex_replace_all:NnN
       \l_LaTeXtut_regex_ss_tl % regex
-      {\cC\3} % replacement
+      {\cC3} % replacement
       \l_LaTeXtut_line_tl
 
     % \tl_show:N \l_LaTeXtut_line_tl
